@@ -38,4 +38,11 @@ public class ContaCorrenteController {
 		conta.setConteudo("extrato");
 		return conta;
 	}
+
+	@RequestMapping(value = "/create-account", method = RequestMethod.POST, 
+			consumes = "application/json", produces = "application/json")
+	public Resposta criarConta(@RequestBody Resposta conta) {
+		conta.setConteudo("conta criada");
+		return conta;
+	}
 }
