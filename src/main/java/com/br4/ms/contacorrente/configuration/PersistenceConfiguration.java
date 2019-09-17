@@ -16,11 +16,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
-@EnableTransactionManagement
 public class PersistenceConfiguration {
 
-	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
@@ -33,7 +30,6 @@ public class PersistenceConfiguration {
 		return em;
 	}
 
-	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -43,7 +39,6 @@ public class PersistenceConfiguration {
 		return dataSource;
 	}
 
-	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
@@ -51,7 +46,6 @@ public class PersistenceConfiguration {
 		return transactionManager;
 	}
 
-	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}

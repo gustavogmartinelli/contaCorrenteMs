@@ -1,8 +1,8 @@
 package com.br4.ms.contacorrente.persistencia.entidades;
 
-import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +24,26 @@ public class ContaCorrente extends Entidade{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idConta;
+	
+	@Column
+	private Moeda moeda;
+	
+
+	public Long getIdConta() {
+		return idConta;
+	}
+
+	public void setIdConta(Long idConta) {
+		this.idConta = idConta;
+	}
+
+	public Moeda getMoeda() {
+		return moeda;
+	}
+
+	public void setMoeda(Moeda moeda) {
+		this.moeda = moeda;
+	}
 
 	@Override
 	public int hashCode() {

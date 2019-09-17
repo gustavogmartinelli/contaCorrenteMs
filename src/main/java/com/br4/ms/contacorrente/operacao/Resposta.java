@@ -8,8 +8,8 @@ public class Resposta {
 	public Resposta() {
 		
 	}
+	
 	public Resposta(String conteudo) {
-		// TODO Auto-generated constructor stub
 		this.setConteudo(conteudo);
 	}
 

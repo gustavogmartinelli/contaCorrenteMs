@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Columns;
@@ -36,5 +37,51 @@ public class Lancamento  extends Entidade{
 	@Column(name="startTime")
 	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime data;
+	
+	@ManyToOne
+	private ContaCorrente conta;
+	
+	@ManyToOne
+	private Moeda moeda;
+
+	public Long getIdLancamento() {
+		return idLancamento;
+	}
+
+	public void setIdLancamento(Long idLancamento) {
+		this.idLancamento = idLancamento;
+	}
+
+	public BigMoney getValue() {
+		return value;
+	}
+
+	public void setValue(BigMoney value) {
+		this.value = value;
+	}
+
+	public DateTime getData() {
+		return data;
+	}
+
+	public void setData(DateTime data) {
+		this.data = data;
+	}
+
+	public ContaCorrente getConta() {
+		return conta;
+	}
+
+	public void setConta(ContaCorrente conta) {
+		this.conta = conta;
+	}
+
+	public Moeda getMoeda() {
+		return moeda;
+	}
+
+	public void setMoeda(Moeda moeda) {
+		this.moeda = moeda;
+	}
 	
 }

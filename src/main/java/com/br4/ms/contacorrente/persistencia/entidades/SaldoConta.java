@@ -26,9 +26,11 @@ public class SaldoConta extends Entidade{
 	@ManyToOne
 	private ContaCorrente conta;
 	
+	@Id
+	private Moeda moeda;
+
 	private BigMoney saldo;
 	
-	private Moeda moeda;
 
 	@Override
 	public int hashCode() {
