@@ -2,6 +2,7 @@ package com.br4.ms.contacorrente.persistencia.entidades;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -29,6 +30,7 @@ public class SaldoConta extends Entidade{
 	@Id
 	private Moeda moeda;
 
+	@Column
 	private BigMoney saldo;
 	
 

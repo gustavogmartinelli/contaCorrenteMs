@@ -40,7 +40,7 @@ public class ContaCorrenteController {
 	@RequestMapping(value = "/saldo", method = RequestMethod.POST, 
 		    consumes = "application/json", produces = "application/json")
 	public Resposta geraSaldo(@RequestBody Resposta conta) {
-		
+		//repository.findByidContaAndMoeda(idConta, moeda)
 		conta.setConteudo("extrato");
 		return conta;
 	}
@@ -48,6 +48,7 @@ public class ContaCorrenteController {
 	@RequestMapping(value = "/create-account", method = RequestMethod.POST, 
 			consumes = "application/json", produces = "application/json")
 	public Resposta criarConta(@RequestBody Resposta conta) {
+//		repository.save(entity)
 		conta.setConteudo("conta criada");
 		return conta;
 	}
