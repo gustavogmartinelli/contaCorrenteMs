@@ -8,7 +8,7 @@ pipeline {
           }
           stage ('Build') {
             steps {
-                sh 'docker run --rm --name ContaCorrenteMS -v "$PWD":/usr/src/app -w /usr/src/app maven:3.2-jdk-7 mvn clean install' 
+                sh 'docker run --rm --name ContaCorrenteMS -v "$PWD":/usr/src/app -w /usr/src/app maven:3.6.2-jdk-8s mvn clean install' 
             }
             post {
                 success {
