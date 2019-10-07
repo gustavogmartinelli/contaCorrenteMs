@@ -7,7 +7,7 @@
 	<groupId>com.br4.ms</groupId>
 	<artifactId>conta-corrente-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>conta-corrente-ms</name>
 	<description>Demo project for Spring Boot</description>
@@ -15,6 +15,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<docker.image.prefix>gustavogmartinelli</docker.image.prefix>
+		<dockerfile-maven-version>1.4.12</dockerfile-maven-version>
 	</properties>
 
 	<parent>
@@ -24,7 +25,7 @@
 	</parent>
 
 	<dependencies>
-		<dependency>  
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -39,7 +40,6 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.10.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/joda-time/joda-time-hibernate -->
@@ -87,24 +87,24 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.9</version>
+				<version>${dockerfile-maven-version}</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
+					<dockerfile>Dockerfile</dockerfile>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.war</JAR_FILE>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
 				</configuration>
-				<executions>
-				<execution>
-					<id>default</id>
-					<phase>install</phase>
-					<goals>
-						<goal>build</goal>
-						<goal>push</goal>
-					</goals>
-				</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
